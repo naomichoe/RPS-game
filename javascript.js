@@ -12,9 +12,23 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let playerSelectionInCaps = playerSelection.toUpperCase();
-    console.log(playerSelectionInCaps);
+    //console.log(playerSelectionInCaps);
     if (playerSelectionInCaps === "ROCK" && computerSelection === "SCISSORS") {
         return "You win! Rock beats scissors."
+    } else if (playerSelectionInCaps === "ROCK" && computerSelection === "PAPER") {
+        return "You lose! Paper beats rock."
+    } else if (playerSelectionInCaps === "PAPER" && computerSelection === "ROCK") {
+        return "You win! Paper beats rock."
+    } else if (playerSelectionInCaps === "PAPER" && computerSelection === "SCISSORS") {
+        return "You lose! Scissors beats paper."
+    } else if (playerSelectionInCaps === "SCISSORS" && computerSelection === "ROCK") {
+        return "You lose! Rock beats scissors."
+    } else if (playerSelectionInCaps === "SCISSORS" && computerSelection === "PAPER") {
+        return "You win! Scissors beats paper."
+    }
+    
+    else if (playerSelectionInCaps === computerSelection) {
+        return "It's a tie! I'll give you a point anyway."
     }
 }
 
@@ -27,4 +41,5 @@ function game() {
     for (let i = 0; i < 5; i++) {
         console.log(playRound());
     }
+    return "Game Over"
 }
