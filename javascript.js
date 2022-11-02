@@ -1,45 +1,48 @@
-//need an array of rps options
-let rpsChoice = ["ROCK", "PAPER", "SCISSORS"];
 
-//need to create a function that will randomly return an option from the rpsChoice array
-function getComputerChoice() {
-    let randomNum = (Math.floor(Math.random() * 3));
-    //console.log(randomNum);
-    return rpsChoice[randomNum];
+let rpsOptions = ["ROCK", "PAPER", "SCISSORS"];
+
+function getPlayerSelection() {
+    return prompt("Rock, Paper, or Scissors?");
 }
-//verifying if the output it working correctly
-//console.log(getComputerChoice());
+
+function getComputerSelection() {
+    let randomNum = (Math.floor(Math.random() * 3));
+    return rpsOptions[randomNum];
+}
 
 function playRound(playerSelection, computerSelection) {
-    let playerSelectionInCaps = playerSelection.toUpperCase();
-    //console.log(playerSelectionInCaps);
-    if (playerSelectionInCaps === "ROCK" && computerSelection === "SCISSORS") {
-        return "You win! Rock beats scissors."
-    } else if (playerSelectionInCaps === "ROCK" && computerSelection === "PAPER") {
-        return "You lose! Paper beats rock."
-    } else if (playerSelectionInCaps === "PAPER" && computerSelection === "ROCK") {
-        return "You win! Paper beats rock."
-    } else if (playerSelectionInCaps === "PAPER" && computerSelection === "SCISSORS") {
-        return "You lose! Scissors beats paper."
-    } else if (playerSelectionInCaps === "SCISSORS" && computerSelection === "ROCK") {
-        return "You lose! Rock beats scissors."
-    } else if (playerSelectionInCaps === "SCISSORS" && computerSelection === "PAPER") {
-        return "You win! Scissors beats paper."
-    }
+    playerSelection = getPlayerSelection();
+    computerSelection = getComputerSelection();
+    console.log(playerSelection);
+    console.log(computerSelection);
     
-    else if (playerSelectionInCaps === computerSelection) {
+    if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+        return "You win! Rock beats scissors."
+    } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
+        return "You lose! Paper beats rock."
+    } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
+        return "You win! Paper beats rock."
+    } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
+        return "You lose! Scissors beats paper."
+    } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
+        return "You lose! Rock beats scissors."
+    } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
+        return "You win! Scissors beats paper."
+    } else if (playerSelection === computerSelection) {
         return "It's a tie! I'll give you a point anyway."
     }
 }
 
-//This is to test if one round where player selection is rock will return the correct output also it checks for the playerselection being able to accept any version of Rock.
-const playerSelection = prompt("Rock, Paper, or Scissors?");
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-
+//unsure on setup of game
+//need to invoke playRound 
+//need to get playerselection prompt after each round
 function game() {
     for (let i = 0; i < 5; i++) {
-        console.log(playRound());
+        playRound(getPlayerSelection, getComputerSelection);
     }
-    return "Game Over"
+    return "The game is over"
 }
+
+//test game
+console.log(game());
+//console.log(playRound(getPlayerSelection, getComputerSelection));
