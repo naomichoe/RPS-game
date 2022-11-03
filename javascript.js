@@ -55,7 +55,10 @@ document.body.appendChild(rockButton);
 document.body.appendChild(paperButton);
 document.body.appendChild(scissorsButton);
 
-rockButton.innerText = "Rock";
-paperButton.innerText = "Paper";
-scissorsButton.innerText = "Scissors";
+rockButton.innerText = "ROCK";
+paperButton.innerText = "PAPER";
+scissorsButton.innerText = "SCISSORS";
 
+rockButton.addEventListener('click', playRound);
+paperButton.addEventListener('click', playRound);
+scissorsButton.addEventListener('click', playRound);
