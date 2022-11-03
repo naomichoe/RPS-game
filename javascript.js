@@ -33,16 +33,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//unsure on setup of game
-//need to invoke playRound 
-//need to get playerselection prompt after each round
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getPlayerSelection, getComputerSelection);
-    }
-    return "The game is over"
-}
+//removing for UI assignment
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         playRound(getPlayerSelection, getComputerSelection);
+//     }
+//     return "The game is over"
+// }
 
 //test game
-console.log(game());
+//console.log(game());
 //console.log(playRound(getPlayerSelection, getComputerSelection));
+
+//creating the UI assignment
+
+let rockButton = document.createElement('button');
+let paperButton = document.createElement('button');
+let scissorsButton = document.createElement('button');
+
+document.body.appendChild(rockButton);
+document.body.appendChild(paperButton);
+document.body.appendChild(scissorsButton);
+
+rockButton.innerText = "Rock";
+paperButton.innerText = "Paper";
+scissorsButton.innerText = "Scissors";
+
