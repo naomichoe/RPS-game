@@ -10,27 +10,16 @@ function getComputerSelection() {
 //need to change the playerSelection to now accept the button click as playerSelection
 function playGame(playerSelection, computerSelection) {
     let result = ''; 
-    if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
+    if (playerSelection === "ROCK" && computerSelection === "SCISSORS" || playerSelection === "PAPER" && computerSelection === "ROCK" || playerSelection === "SCISSORS" && computerSelection === "PAPER") {
         playerScore++;
-        return "You win! Rock beats scissors."
-    } else if (playerSelection === "ROCK" && computerSelection === "PAPER") {
+        result += `You win! ${playerSelection} beats ${computerSelection}.`
+    } else if (playerSelection === "ROCK" && computerSelection === "PAPER" || playerSelection === "PAPER" && computerSelection === "SCISSORS" || playerSelection === "SCISSORS" && computerSelection === "ROCK") {
         computerScore++;
-        return "You lose! Paper beats rock."
-    } else if (playerSelection === "PAPER" && computerSelection === "ROCK") {
-        playerScore++;
-        return "You win! Paper beats rock."
-    } else if (playerSelection === "PAPER" && computerSelection === "SCISSORS") {
-        computerScore++;
-        return "You lose! Scissors beats paper."
-    } else if (playerSelection === "SCISSORS" && computerSelection === "ROCK") {
-        computerScore++;
-        return "You lose! Rock beats scissors."
-    } else if (playerSelection === "SCISSORS" && computerSelection === "PAPER") {
-        playerScore++;
-        return "You win! Scissors beats paper."
+        result += `You lose! ${computerSelection} beats ${playerSelection}.`
     } else if (playerSelection === computerSelection) {
-        return `It's a tie! You both played ${playerSelection}.`
+        result += `It's a tie! You both played ${playerSelection}.`
     }
+    return ;
 }
 
 //creating the UI assignment
