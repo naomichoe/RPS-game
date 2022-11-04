@@ -1,18 +1,15 @@
 let playerScore = 0;
 let computerScore = 0;
 
-function getPlayerSelection() {
-    return prompt("Rock, Paper, or Scissors?");
-}
-
 function getComputerSelection() {
     let rpsOptions = ["ROCK", "PAPER", "SCISSORS"];
-    let randomNum = (Math.floor(Math.random() * 3));
+    let randomNum = (Math.floor(Math.random() * rpsOptions.length));
     return rpsOptions[randomNum];
 }
 
 //need to change the playerSelection to now accept the button click as playerSelection
-function playRound(playerSelection, computerSelection) {
+function playGame(playerSelection, computerSelection) {
+    let result = ''; 
     if (playerSelection === "ROCK" && computerSelection === "SCISSORS") {
         playerScore++;
         return "You win! Rock beats scissors."
@@ -36,40 +33,59 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// removing for UI assignment
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = getPlayerSelection();
+//creating the UI assignment
+let rockButton = document.querySelector('#rock');
+let paperButton = document.querySelector('#paper');
+let scissorsButton = document.querySelector('#scissors');
+
+//loop through all buttons and add the event listener
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id.toUpperCase();
         let computerSelection = getComputerSelection();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-    if (playerScore > computerScore) {
-        return "You won the game!";
-    } else if (playerScore < computerScore) {
-        return "You lost the game.";
-    } else {
-        return "It's a tie. Play again."
-    }
-}
+        playGame(playerSelection, computerSelection);
+    });
+})
+
+//addEventListener to each button
+// rockButton.addEventListener('click', () => {
+//     let playerSelection = 'ROCK';
+//     let computerSelection = getComputerSelection();
+//     console.log(playRound(playerSelection, computerSelection));
+// });
+// paperButton.addEventListener('click', () => {
+//     let playerSelection = 'PAPER';
+//     let computerSelection = getComputerSelection();
+//     console.log(playRound(playerSelection, computerSelection));
+// });
+// scissorsButton.addEventListener('click', () => {
+//     let playerSelection = 'SCISSORS';
+//     let computerSelection = getComputerSelection();
+//     console.log(playRound(playerSelection, computerSelection));
+// });
+
+// removing for UI assignment
+
+// function getPlayerSelection() {
+//     return prompt("Rock, Paper, or Scissors?");
+// }
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         let playerSelection = getPlayerSelection().toUpperCase();
+//         let computerSelection = getComputerSelection();
+//         console.log(playRound(playerSelection, computerSelection));
+//     }
+//     if (playerScore > computerScore) {
+//         return "You won the game!";
+//     } else if (playerScore < computerScore) {
+//         return "You lost the game.";
+//     } else {
+//         return "It's a tie. Play again."
+//     }
+// }
 
 //test game
-console.log(game());
+//console.log(game());
 //console.log(playRound(getPlayerSelection, getComputerSelection));
-
-
-//creating the UI assignment
-// let rockButton = document.createElement('button');
-// let paperButton = document.createElement('button');
-// let scissorsButton = document.createElement('button');
-
-// document.body.appendChild(rockButton);
-// document.body.appendChild(paperButton);
-// document.body.appendChild(scissorsButton);
-
-// rockButton.innerText = "ROCK";
-// paperButton.innerText = "PAPER";
-// scissorsButton.innerText = "SCISSORS";
-
-// rockButton.addEventListener('click', playRound);
-// paperButton.addEventListener('click', playRound);
-// scissorsButton.addEventListener('click', playRound);
