@@ -12,13 +12,6 @@ function disableButtons() {
     buttons.forEach(button => {button.disabled = true;});
 }
 
-// function showScore() {
-//     let currentScore = document.createElement('p');
-//     currentScore.innerText = `Player score: ${playerScore}, Computer score: ${computerScore}`
-//     gameScoreDiv.appendChild(currentScore);
-// }
-
-//need to change the playerSelection to now accept the button click as playerSelection
 function playGame(playerSelection, computerSelection) {
     let gameScoreDiv = document.querySelector('.game-score');
 
@@ -26,14 +19,14 @@ function playGame(playerSelection, computerSelection) {
         playerScore++;
         gameScoreDiv.innerText = `You win! ${playerSelection} beats ${computerSelection}. Player score: ${playerScore}, Computer score: ${computerScore}`;
         if (playerScore === 5) {
-            gameScoreDiv.innerText = `You won the game! Reload to play again.`
+            gameScoreDiv.innerText = `You won the game! Reload to play again. Player score: ${playerScore}, Computer score: ${computerScore}`
             disableButtons();
         }
     } else if (playerSelection === "ROCK" && computerSelection === "PAPER" || playerSelection === "PAPER" && computerSelection === "SCISSORS" || playerSelection === "SCISSORS" && computerSelection === "ROCK") {
         computerScore++;
         gameScoreDiv.innerText = `You lose! ${computerSelection} beats ${playerSelection}. Player score: ${playerScore}, Computer score: ${computerScore}`;
         if (computerScore === 5) {
-            gameScoreDiv.innerText = `You lost the game! Reload to try again.`
+            gameScoreDiv.innerText = `You lost the game! Reload to try again. Player score: ${playerScore}, Computer score: ${computerScore}`
             disableButtons();
         }
     } else if (playerSelection === computerSelection) {
