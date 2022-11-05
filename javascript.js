@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let buttons = document.querySelectorAll('button');
 
 function getComputerSelection() {
     let rpsOptions = ["ROCK", "PAPER", "SCISSORS"];
@@ -7,38 +8,41 @@ function getComputerSelection() {
     return rpsOptions[randomNum];
 }
 
+function disableButtons() {
+    buttons.forEach(button => {button.disabled = true;});
+}
+
+// function showScore() {
+//     let currentScore = document.createElement('p');
+//     currentScore.innerText = `Player score: ${playerScore}, Computer score: ${computerScore}`
+//     gameScoreDiv.appendChild(currentScore);
+// }
+
 //need to change the playerSelection to now accept the button click as playerSelection
 function playGame(playerSelection, computerSelection) {
-    let result = ''; 
-    let gameResult = document.createElement('p');
     let gameScoreDiv = document.querySelector('.game-score');
+
     if (playerSelection === "ROCK" && computerSelection === "SCISSORS" || playerSelection === "PAPER" && computerSelection === "ROCK" || playerSelection === "SCISSORS" && computerSelection === "PAPER") {
         playerScore++;
-        result += `You win! ${playerSelection} beats ${computerSelection}.`;
+        gameScoreDiv.innerText = `You win! ${playerSelection} beats ${computerSelection}. Player score: ${playerScore}, Computer score: ${computerScore}`;
         if (playerScore === 5) {
-            gameResult.innerText = `You won the game! Reload to play again.`
-            gameScoreDiv.appendChild(gameResult);
+            gameScoreDiv.innerText = `You won the game! Reload to play again.`
+            disableButtons();
         }
     } else if (playerSelection === "ROCK" && computerSelection === "PAPER" || playerSelection === "PAPER" && computerSelection === "SCISSORS" || playerSelection === "SCISSORS" && computerSelection === "ROCK") {
         computerScore++;
-        result += `You lose! ${computerSelection} beats ${playerSelection}.`;
+        gameScoreDiv.innerText = `You lose! ${computerSelection} beats ${playerSelection}. Player score: ${playerScore}, Computer score: ${computerScore}`;
         if (computerScore === 5) {
-            gameResult.innerText = `You lost the game! Reload to try again.`
-            gameScoreDiv.appendChild(gameResult);
+            gameScoreDiv.innerText = `You lost the game! Reload to try again.`
+            disableButtons();
         }
     } else if (playerSelection === computerSelection) {
-        result += `It's a tie! You both played ${playerSelection}.`
+        gameScoreDiv.innerText = `It's a tie! You both played ${playerSelection}. Player score: ${playerScore}, Computer score: ${computerScore}`
     }
-    return result; //need to add the return result statement and disable buttons when the game ends at score of 5
 }
 
 //creating the UI assignment
-// let rockButton = document.querySelector('#rock');
-// let paperButton = document.querySelector('#paper');
-// let scissorsButton = document.querySelector('#scissors');
-
 //loop through all buttons and add the event listener
-let buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         let playerSelection = button.id.toUpperCase();
@@ -48,6 +52,10 @@ buttons.forEach(button => {
 })
 
 //addEventListener to each button
+// let rockButton = document.querySelector('#rock');
+// let paperButton = document.querySelector('#paper');
+// let scissorsButton = document.querySelector('#scissors');
+
 // rockButton.addEventListener('click', () => {
 //     let playerSelection = 'ROCK';
 //     let computerSelection = getComputerSelection();
